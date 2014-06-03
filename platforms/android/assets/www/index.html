@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+  <title>Smart bill</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta content="user-scalable=no" />
+  
+	<link rel="stylesheet" href="Lib/jquery.mobile-1.4.2.min.css" />  
+	<link rel="stylesheet" href="Scripts/icons.css"/> 
+  
+	<script type="text/javascript" src="Lib/jquery-1.7.1.js"></script>    
+	<script type="text/javascript" src="Lib/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" src="Lib/jquery.cookie.js" ></script>
+	<script type="text/javascript" src="Lib/cordova-2.4.0.js" ></script>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<script type="text/javascript" src="Lib/ajaxupload.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+         
+    }
+
+    </script>
+  </head>
+  <body>
+<!--Authorization-->
+<div data-role="page" data-theme="a" id="AuthorPage"> 
+  <script type="text/javascript" src="Scripts/VKAutorizationPlugin.js"></script>   
+  <script type="text/javascript" src="Scripts/UserDetails.js"></script>   
+  <script type="text/javascript" src="Scripts/strings.js"></script>   
+   
+  <div data-role="header", data-theme="a">
+    <h1 id="h3">Smart bill</h1>
+	<a href="#Settings" data-icon="gear" class="ui-btn-right">Options</a>
+  </div><!-- /header -->
+  
+  <div data-role="content">
+    <div id="AuthLabel"><h4>Авторизация</h4>
+      <a href="#" data-role="button" data-theme="d" id="VKButton" onclick="plugin_vk.auth(true)" data-icon="check" type="submit">Войти через Вконтакте</a>
+      <a href="#" data-role="button" data-theme="d" id="UserInfoBtn" onclick="user_details.open_user_details_page()" data-icon="check" type="submit">User</a>
+      <a href="#Contacts" data-role="button" data-theme="d" id="ContactsBtn" onclick="" data-icon="check" type="submit">Contacts</a>
+    </div>
+  </div><!-- /content -->
+  
+  <div data-role="footer", data-theme="c">
+  </div><!--/footer-->
+  
+</div><!-- /page -->
+
+<!--User info-->
+<div data-role="page" data-theme="a" id="UserInfo"> 
+  <script type="text/javascript" src="Scripts/VKAutorizationPlugin.js"></script>   
+  
+  <div data-role="header", data-theme="a">
+    <h1>User info</h1>
+	<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
+  </div><!-- /header -->
+  
+  <div data-role="content">
+	
+	<ul data-role="listview">
+		<li>
+			<img style="display:block;width:100%;height:100%;" id="userPhoto" src=""> 
+				<script type="text/javascript" charset="utf-8">
+					var userPhoto=document.getElementById('userPhoto');
+					userPhoto.src=window.localStorage.getItem(user_info.photo);
+				</script>
+			</img>
+			<h2 style="color:gray">Name</h2>
+			<p><strong id="userNameItem" style="color:black">
+				<script type="text/javascript" charset="utf-8">
+					var userNameItem=document.getElementById('userNameItem');
+					var name=window.localStorage.getItem(user_info.first_name);
+					var last_name=window.localStorage.getItem(user_info.last_name);
+					userNameItem.textContent=name+' '+last_name;
+				</script>
+			</strong></p>
+		</li>
+	</ul>
+	<div id="SocialLabel"><h4 align="center" style="color:gray">Social</h4>
+	<input id="vkLinkButton" href="#" data-role="button" data-theme="a" type="submit" data-icon="vk" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-btn-active" value="Connect to VK"/>
+	<input id="fbLinkButton" href="#" data-role="button" data-theme="a" type="submit" data-icon="fb" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-btn-active" value="Connect to facebook"/>
+    </div>
+  </div><!-- /content -->
+  
+  <div data-role="footer", data-theme="c">
+  </div><!--/footer-->
+  
+</div><!-- /page -->
+
+<!--Persons to add-->
+<div data-role="page" data-theme="b" id="Contacts">
+	<div data-role="header" data-theme="a" >
+		<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
+		<h1 id="sdf">Contacts</h1>
+	</div><!--/header-->
+	
+	<div data-role="content" data-theme="a">
+		<ul data-role="listview" data-filter="true" data-filter-placeholder="Search friends..." data-inset="true" id="FriendsList">
+			<script type="text/javascript" charset="utf-8">
+				$('#Contacts').bind('pageinit', function() {
+					//TODO need to cache friends list, download time is too large
+					plugin_vk.load_friends();
+				});
+			</script>
+		</ul>
+	</div>
+</div><!-- /page -->
+
+<!--Settings-->
+<div data-role="page" data-theme="b" id="Settings">
+	<div data-role="header" data-theme="a" >
+		<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
+		<h1 id="sdf">Settings</h1>
+	</div><!--/header-->
+	
+	<div data-role="content" data-theme="a">
+		
+	</div>
+</div><!-- /page -->
+
+</body>
+</html>
