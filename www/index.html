@@ -38,7 +38,7 @@
    
   <div data-role="header", data-theme="a">
     <h1 id="h3">Smart bill</h1>
-	<a href="#Settings" data-icon="gear" class="ui-btn-right">Options</a>
+	<a href="#Settings" data-rel="Settings" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
   </div><!-- /header -->
   
   <div data-role="content">
@@ -46,6 +46,7 @@
       <a href="#" data-role="button" data-theme="d" id="VKButton" onclick="plugin_vk.auth(true)" data-icon="check" type="submit">Войти через Вконтакте</a>
       <a href="#" data-role="button" data-theme="d" id="UserInfoBtn" onclick="user_details.open_user_details_page()" data-icon="check" type="submit">User</a>
       <a href="#Contacts" data-role="button" data-theme="d" id="ContactsBtn" onclick="" data-icon="check" type="submit">Contacts</a>
+      <a href="#ListOfBills" data-role="button" data-theme="d" id="ListOfBillsBtn" onclick="" data-icon="check" type="submit">List Of Bills</a>
     </div>
   </div><!-- /content -->
   
@@ -60,7 +61,7 @@
   
   <div data-role="header", data-theme="a">
     <h1>User info</h1>
-	<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
+	<a href="#" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
   </div><!-- /header -->
   
   <div data-role="content">
@@ -98,7 +99,7 @@
 <!--Persons to add-->
 <div data-role="page" data-theme="b" id="Contacts">
 	<div data-role="header" data-theme="a" >
-		<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
+		<a href="#" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
 		<h1 id="sdf">Contacts</h1>
 	</div><!--/header-->
 	
@@ -117,12 +118,50 @@
 <!--Settings-->
 <div data-role="page" data-theme="b" id="Settings">
 	<div data-role="header" data-theme="a" >
-		<a href="#AuthorPage" data-icon="arrow-l" class="ui-btn-left">Back</a>
-		<h1 id="sdf">Settings</h1>
+		<a href="../Settings/" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<h1>Settings</h1>
 	</div><!--/header-->
 	
 	<div data-role="content" data-theme="a">
 		
+	</div>
+</div><!-- /page -->
+
+<!--List of bills-->
+<div data-role="page" data-theme="b" id="ListOfBills">
+	
+	<script>
+		$( document ).on( "pagecreate", "#ListOfBills", function() {
+			$( document ).on( "swipeleft swiperight", "#ListOfBills", function( e ) {
+        // We check if there is no open panel on the page because otherwise
+        // a swipe to close the left panel would also open the right panel (and v.v.).
+        // We do this by checking the data that the framework stores on the page element (panel: open).
+				if ( $( ".ui-page-active" ).jqmData( "panel" ) !== "open" ) {
+					if ( e.type === "swipeleft" ) {
+						$( "#right-panel" ).panel( "open" );
+					} else if ( e.type === "swiperight" ) {
+						$( "#left-panel" ).panel( "open" );
+					}
+				}
+			});
+		});
+	</script>
+
+
+	<div data-role="panel" id="right-panel" data-display="push" data-position="right" data-theme="b" class="ui-panel ui-panel-position-right ui-panel-display-push ui-body-b ui-panel-animate ui-panel-open">
+		<a href="#mypanel" data-role="button" data-theme="d" id="ListOfBillsBtn" onclick="" data-icon="check" type="submit">List Of Bills</a>
+	</div><!-- /panel -->
+
+	<div data-role="header" data-theme="a" >
+		<a href="#right-panel" data-rel="panel" data-position="right" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
+		<a href="#AuthorPage" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<h1>List of bills</h1>
+	</div><!--/header-->
+	
+	<div data-role="content" data-theme="a">
+		<div class="ui-grid-a">
+			<a href="#mypanel" data-role="button" data-theme="d" id="ListOfBillsBtn" onclick="" data-icon="check" type="submit">List Of Bills</a>
+		</div><!-- /grid-a -->
 	</div>
 </div><!-- /page -->
 
