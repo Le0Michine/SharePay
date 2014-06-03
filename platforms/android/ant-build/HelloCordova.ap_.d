@@ -1571,6 +1571,7 @@ d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.svg \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\Functions \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\icons.css \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\icons.js \
+d:\Develop\SmartBill\platforms\android\assets\www\Scripts\listview_plugin.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\strings.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\swipePanel.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\UserDetails.js \

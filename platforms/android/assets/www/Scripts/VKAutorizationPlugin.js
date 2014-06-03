@@ -61,7 +61,7 @@ var plugin_vk = {
 	},
 	fill_friends_list: function (list) {
 		//alert("list:"+list['response']);
-		var leftListTag='<li><a href="#" type="submit" id="';
+		var leftListTag='<li><a href="#" onclick="plugin_listview.listItemSelect(this.id)" data-theme="c" id="';
 		var rightListTag='</a></li>';
 		jQuery.each(list['response'],function(){$("#FriendsList").append(leftListTag+this.uid+'">' +this.first_name+' '+this.last_name+rightListTag)})
 		//this.uid
