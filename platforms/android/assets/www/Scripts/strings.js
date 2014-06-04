@@ -11,5 +11,6 @@ user_info={
 	first_name: "user_name",
 	last_name: "user_last_name",
 	photo: "user_photo",
+	photo_big: "user_photo_big",
 	password: "user_password"
 };

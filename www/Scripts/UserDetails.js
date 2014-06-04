@@ -24,8 +24,20 @@ var user_details={
 		var userNameItem=document.getElementById('userNameItem');
 		var name=window.localStorage.getItem(user_info.first_name);
 		var last_name=window.localStorage.getItem(user_info.last_name);
-		userNameItem.textContent=name+' '+last_name;
 		var userPhoto=document.getElementById('userPhoto');
+		userNameItem.textContent=name+' '+last_name+' (id: '+uid+')';
 		userPhoto.src=window.localStorage.getItem(user_info.photo);
-	}
+	},
+	update_user_info_debug: function() {
+		//debug function
+		var uid=window.localStorage.getItem(plugins.plugin_vk_user_id);
+		plugin_vk.get_user_info(uid);
+		var name=window.localStorage.getItem(user_info.first_name);
+		var last_name=window.localStorage.getItem(user_info.last_name);
+		var photo=window.localStorage.getItem(user_info.photo);
+		alert("name: "+name);
+		alert("last_name: "+last_name);
+		alert("photo: "+photo);
+		aler("updated");
+	} 
 }

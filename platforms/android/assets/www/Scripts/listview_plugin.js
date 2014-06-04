@@ -32,7 +32,7 @@ plugin_listview={
 	},
 	
 	fill_list: function(listId) {
-		var item ="<li id=\"123\"><a href=\"#\" ><h3>Avery Walker</h3><p class=\"topic\"><strong>Re: Dinner Tonight</strong></p><p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait!</p><p class=\"ui-li-aside\"><strong>4:48</strong>PM</p></a><a href=\"#\" cass=\"delete\" onclick=\"plugin_listview.delete_item(this.parentElement)\">Delete</a></li>";
+		var item ="<li id=\"123\"><a href=\"#\" class=\"topic\"><h3>Name</h3><p>Summary, one line</p><p class=\"ui-li-aside\"><strong>Share</strong>(Currency)</p></a><a href=\"#\" cass=\"delete\" onclick=\"plugin_listview.delete_item(this.parentElement,'deleteBillConfirm')\">Delete</a></li>";
 		var list=$("#"+listId);
 		list.append(item);
 		list.listview("refresh");

@@ -71,20 +71,20 @@
 	
 	<ul data-role="listview">
 		<li>
-			<img style="display:block;width:100%;height:100%;" id="userPhoto" src=""> 
-				<script type="text/javascript" charset="utf-8">
-					var userPhoto=document.getElementById('userPhoto');
-					userPhoto.src=window.localStorage.getItem(user_info.photo);
-				</script>
-			</img>
+			<img style="display:block;width:100%;height:100%;" id="userPhoto" src=""></img>
 			<h2 style="color:gray">Name</h2>
 			<p><strong id="userNameItem" style="color:black">
 				<script type="text/javascript" charset="utf-8">
-					var userNameItem=document.getElementById('userNameItem');
-					var name=window.localStorage.getItem(user_info.first_name);
-					var last_name=window.localStorage.getItem(user_info.last_name);
-					var uid=window.localStorage.getItem(plugins.plugin_vk_user_id);
-					userNameItem.textContent=name+' '+last_name+' (id: '+uid+')';
+					$('#UserInfo').bind('pageinit', function() {
+						var uid=window.localStorage.getItem(plugins.plugin_vk_user_id);
+						plugin_vk.get_user_info(uid);
+						var userNameItem=document.getElementById('userNameItem');
+						var name=window.localStorage.getItem(user_info.first_name);
+						var last_name=window.localStorage.getItem(user_info.last_name);
+						var userPhoto=document.getElementById('userPhoto');
+						userNameItem.textContent=name+' '+last_name+' (id: '+uid+')';
+						userPhoto.src=window.localStorage.getItem(user_info.photo);
+					});
 				</script>
 			</strong></p>
 		</li>

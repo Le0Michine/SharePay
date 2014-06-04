@@ -69,7 +69,7 @@ var plugin_vk = {
 		//$.mobile.changePage("#MainPage");
 	},
 	get_user_info: function(uid) {
-		var userURL="https://api.vk.com/method/users.get?user_id="+uid+"&fields=first_name,last_name,photo_big";
+		var userURL="https://api.vk.com/method/users.get?user_id="+uid+"&fields=first_name,last_name,photo_medium,photo_big";
 		$.ajax({
 			type: "GET",
 			url: userURL,
@@ -78,11 +78,13 @@ var plugin_vk = {
 		})
 	},
 	fill_user_info: function(data) {
-		jQuery.each(data['response'], function() {
-			window.localStorage.setItem(user_info.first_name, this.first_name);
-			window.localStorage.setItem(user_info.last_name, this.last_name);
-			window.localStorage.setItem(user_info.photo, this.photo);
-		})
+		if(data['response'].length == 1) {
+			var user = data['response'][0];
+			window.localStorage.setItem(user_info.first_name, user.first_name);
+			window.localStorage.setItem(user_info.last_name, user.last_name);
+			window.localStorage.setItem(user_info.photo, user.photo_medium);
+			window.localStorage.setItem(user_info.photo_big, user.photo_big);
+		}
 	},
 	reset: function() {
 		window.localStorage.removeItem("plugin_vk_token");
@@ -93,6 +95,7 @@ var plugin_vk = {
 };
 
 var test = function(){
+	//debug function
 	var authURL="https://oauth.vk.com/authorize?client_id=12345&scope="+this.plugin_perms+"&redirect_uri=http://oauth.vk.com/blank.html&display=touch&response_type=token";
 	var ref = window.open(encodeURI(authURL), '_blank', 'location=no');
     ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
