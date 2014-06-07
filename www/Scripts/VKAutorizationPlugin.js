@@ -51,22 +51,41 @@ var plugin_vk = {
 		//alert("load_friends");
 		var uid=window.localStorage.getItem(plugins.plugin_vk_user_id);
 		//alert("uid: "+uid);
-		var friendsURL="https://api.vk.com/method/friends.get?user_id="+uid+"&fields=first_name,last_name&order=name";
-		$.ajax({
-			type: "GET",
-			url: friendsURL,
-			dataType: "jsonp",
-			success: this.fill_friends_list
-		})
+		contacts_list = getObj(contacts_info.list_id);
+		if(contacts_list != null && contacts_list.length > 0) {
+			this.fill_friends_list(contacts_list);
+		}
+		else {
+			var friendsURL="https://api.vk.com/method/friends.get?user_id="+uid+"&fields=first_name,last_name&order=name";
+			$.ajax({
+				type: "GET",
+				url: friendsURL,
+				dataType: "jsonp",
+				success: function(response) {
+					plugin_vk.fill_friends_list(response['response']);
+					plugin_vk.cache_contact_list(response['response']);
+				}
+			});
+		}
+	},
+	cache_contact_list: function(list) {
+		var contacts = new Array();
+		jQuery.each(list,function() {
+			contacts[contacts.length]=this;
+		});
+		saveObj(contacts,contacts_info.list_id);
+	},
+	add_contact_to_list: function(contact) {
+		saveObjToList(contact,contacts_info.list_id);
 	},
 	fill_friends_list: function (list) {
-		//alert("list:"+list['response']);
-		var leftListTag='<li><a href="#" onclick="plugin_listview.listItemMultiSelect(this.id)" data-theme="c" id="';
-		var rightListTag='</a></li>';
-		jQuery.each(list['response'],function(){$("#FriendsList").append(leftListTag+this.uid+'">' +this.first_name+' '+this.last_name+rightListTag)})
-		//this.uid
+		jQuery.each(list,function() {
+			$("#FriendsList").append(create("li",{},
+				create("a",{href:"#",onclick:"plugin_listview.listItemMultiSelect(this.id)","data-theme":"c",id:this.uid},
+				this.first_name+' '+this.last_name)))
+		});
 		$("#FriendsList").listview("refresh");
-		//$.mobile.changePage("#MainPage");
+		//$.mobile.changePage("#Contacts");
 	},
 	get_user_info: function(uid) {
 		var userURL="https://api.vk.com/method/users.get?user_id="+uid+"&fields=first_name,last_name,photo_medium,photo_big";

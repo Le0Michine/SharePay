@@ -32,13 +32,14 @@ plugin_listview={
 	},
 	
 	fill_list: function(listId) {
-		var item ="<li id=\"123\"><a href=\"#\" class=\"topic\"><h3>Name</h3><p>Summary, one line</p><p class=\"ui-li-aside\"><strong>Share</strong>(Currency)</p></a><a href=\"#\" cass=\"delete\" onclick=\"plugin_listview.delete_item(this.parentElement,'deleteBillConfirm')\">Delete</a></li>";
+		var item ="<li id=\"123\"><a href=\"#\"><h3 class=\"topic\">Name</h3><p>Summary, one line</p><p class=\"ui-li-aside\"><strong>Share</strong>(Currency)</p></a><a href=\"#\" cass=\"delete\" onclick=\"plugin_listview.delete_item(this.parentElement,'deleteBillConfirm')\">Delete</a></li>";
 		var list=$("#"+listId);
 		list.append(item);
 		list.listview("refresh");
 	},
 	
-	delete_item: function(listItem,popupId) {
+	delete_item: function(listItem) {
+		var popupId="deleteConfirmDialog";
 		$(listItem).children(".ui-btn").addClass("ui-btn-active");
 		$("#"+popupId+" .topic").remove();
         $(listItem).find(".topic").clone().insertAfter("#question");

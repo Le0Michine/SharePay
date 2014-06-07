@@ -57,7 +57,6 @@ d:\Develop\SmartBill\platforms\android\assets\www\cordova.js \
 d:\Develop\SmartBill\platforms\android\assets\www\cordova_plugins.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Icons \
 d:\Develop\SmartBill\platforms\android\assets\www\img \
-d:\Develop\SmartBill\platforms\android\assets\www\index _test.html \
 d:\Develop\SmartBill\platforms\android\assets\www\index.html \
 d:\Develop\SmartBill\platforms\android\assets\www\jquery.mobile-1.4.2 \
 d:\Develop\SmartBill\platforms\android\assets\www\Lib \
@@ -567,6 +566,8 @@ d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.ina
 d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.inappbrowser\www\inappbrowser.js \
 d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www \
 d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
+d:\Develop\SmartBill\platforms\android\assets\www\Scripts\bills.js \
+d:\Develop\SmartBill\platforms\android\assets\www\Scripts\debts.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.png \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.svg \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\Functions \
