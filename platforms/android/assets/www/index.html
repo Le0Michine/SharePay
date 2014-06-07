@@ -7,57 +7,91 @@
   
 	<link rel="stylesheet" href="Lib/jquery.mobile-1.4.2.min.css" />  
 	<link rel="stylesheet" href="Scripts/icons.css"/> 
+	<style type="text/css" media="all">
+
+	</style>
+	<!-- <link rel="stylesheet" href="Lib/PageSlider/css/pageslider.css"> -->
+    <!-- <link rel="stylesheet" href="Lib/PageSlider/css/styles.css"> -->
   
 	<script type="text/javascript" src="Lib/jquery-1.7.1.js"></script>    
 	<script type="text/javascript" src="Lib/jquery.mobile-1.4.2.min.js"></script>
 	<script type="text/javascript" src="Lib/jquery.cookie.js" ></script>
 	<script type="text/javascript" src="Lib/cordova-2.4.0.js" ></script>
 	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-	<script type="text/javascript" src="Lib/ajaxupload.js"></script>    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="Lib/ajaxupload.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="Scripts/VKAutorizationPlugin.js"></script>   
+	<script type="text/javascript" src="Scripts/UserDetails.js"></script>   
+	<script type="text/javascript" src="Scripts/strings.js"></script>   
+	<script type="text/javascript" src="Scripts/listview_plugin.js"></script>   
+	
     <script type="text/javascript" charset="utf-8">
-
-    // Wait for device API libraries to load
-    //
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    // device APIs are available
-    //
-    function onDeviceReady() {
-         
-    }
-
+		// Wait for device API libraries to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+		document.addEventListener("menubutton", menuKeyDown, false);
+		// device APIs are available
+		//
+		function onDeviceReady() {
+		}
+		
+		function menuKeyDown(e){
+			alert("menu");
+		}
+		
+		$( function() {
+			$( "#navPopupMenu" ).enhanceWithin().popup();
+		});
     </script>
   </head>
   <body>
-<!--Authorization-->
-<div data-role="page" data-theme="a" id="AuthorPage"> 
-  <script type="text/javascript" src="Scripts/VKAutorizationPlugin.js"></script>   
-  <script type="text/javascript" src="Scripts/UserDetails.js"></script>   
-  <script type="text/javascript" src="Scripts/strings.js"></script>   
-  <script type="text/javascript" src="Scripts/listview_plugin.js"></script>   
-   
+	<div data-role="popup" id="navPopupMenu" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Go to...</li>
+            <li><a href="#Contacts">Contacts</a></li>
+            <li><a href="#ListOfBills">List of bills</a></li>
+            <li><a href="#ListOfDebts">List of debts</a></li>
+            <li><a href="#DebugPage">Debug page</a></li>
+        </ul>
+	</div>
+<!--Debug-->
+<div data-role="page" data-theme="a" id="DebugPage"> 
   <div data-role="header", data-theme="a">
     <h1 id="h3">Smart bill</h1>
-	<a href="#Settings" data-rel="Settings" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
+	<a href="#Settings" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-gear ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
+	<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
   </div><!-- /header -->
   
   <div data-role="content">
-    <div id="AuthLabel"><h4>Авторизация</h4>
-      <a href="#" data-role="button" data-theme="d" id="VKButton" onclick="plugin_vk.auth(true)" data-icon="check" type="submit">Войти через Вконтакте</a>
-      <a href="#" data-role="button" data-theme="d" id="UserInfoBtn" onclick="user_details.open_user_details_page()" data-icon="check" type="submit">User</a>
-      <a href="#Contacts" data-role="button" data-theme="d" id="ContactsBtn" onclick="" data-icon="check" type="submit">Contacts</a>
-      <a href="#ListOfDebts" data-role="button" data-theme="d" id="ListOfDebtsBtn" onclick="" data-icon="check" type="submit">List Of Debts</a>
-      <a href="#ListOfBills" data-role="button" data-theme="d" id="ListOfBillsBtn" onclick="" data-icon="check" type="submit">List Of Bills</a>
-      <a href="#EditBill" data-role="button" data-theme="d" id="EditBillBtn" onclick="" data-icon="check" type="submit">Edit Bill</a>
-      <a href="#DebtDetails" data-role="button" data-theme="d" id="DebtDetailsBtn" onclick="" data-icon="check" type="submit" data-transition="slide">Debt details</a>
-      <a href="#Invitation" data-role="button" data-theme="d" id="InvitationsBtn" onclick="" data-icon="check" type="submit">Invitation</a>
-    </div>
-  </div><!-- /content -->
-  
-  <div data-role="footer", data-theme="c">
-  </div><!--/footer-->
-  
+		<!-- <div id="AuthLabel"><h4>Авторизация</h4> -->
+			<a href="#" data-role="button" data-theme="d" id="VKButton" onclick="plugin_vk.auth(true)" data-icon="check" type="submit">Войти через Вконтакте</a>
+			<a href="#" data-role="button" data-theme="d" id="UserInfoBtn" onclick="user_details.open_user_details_page()" data-icon="check" type="submit">User</a>
+			<a href="#Contacts" data-role="button" data-theme="d" id="ContactsBtn" data-icon="check" type="submit">Contacts</a>
+			<a href="#ListOfDebts" data-role="button" data-theme="d" id="ListOfDebtsBtn" onclick="" data-icon="check" type="submit">List Of Debts</a>
+			<a href="#ListOfBills" data-role="button" data-theme="d" id="ListOfBillsBtn" onclick="" data-icon="check" type="submit">List Of Bills</a>
+			<a href="#EditBill" data-role="button" data-theme="d" id="EditBillBtn" onclick="" data-icon="check" type="submit">Edit Bill</a>
+			<a href="#DebtDetails" data-role="button" data-theme="d" id="DebtDetailsBtn" onclick="" data-icon="check" type="submit" data-transition="slide">Debt details</a>
+			<a href="#Invitation" data-role="button" data-rel="popup" data-theme="d" id="InvitationBtn" data-icon="check" type="submit">Invitation</a>
+			<a href="#TestPage" data-role="button" data-theme="d" id="TestBtn" data-icon="check" type="submit">Test</a>
+			<a href="#navPopupMenu" data-rel="popup" data-role="button" data-theme="d" id="navPopupMenuBtn" data-icon="check" type="submit">navPopupMenu</a>
+		<!-- </div> -->
+	</div><!-- /content -->
+
+	
+	<div data-role="popup" id="Invitation" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;" data-transition="slidedown">
+		<div data-role="header" data-theme="a">
+			<h1>Invitation</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<h3 class="ui-title">Hi, let's share the pay</h3>
+			<p><style="color:gray">Total:</style><strong>200</strong>($)</p>
+			<p><style="color:gray">Share:</style><strong>250</strong>($)</p>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Confirm</a>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Reject</a>
+		</div>
+	</div>
+	
 </div><!-- /page -->
 
 <!--User info-->
@@ -102,12 +136,26 @@
   
 </div><!-- /page -->
 
+<!--Settings-->
+<div data-role="page" data-theme="b" id="Settings">
+	<div data-role="header" data-theme="a" >
+		<a href="../Settings/" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<h1>Settings</h1>
+	</div><!--/header-->
+	
+	<div data-role="content" data-theme="a">
+		
+	</div>
+</div><!-- /page -->
+
+<!--Main pages------------------------------------------------------------------------------------------------------------------------------------>
+
 <!--Persons to add-->
-<div data-role="page" data-theme="b" id="Contacts">
+<div data-role="page" data-theme="b" id="Contacts" data-title="Contacts">
 	<div data-role="header" data-theme="a" data-position="fixed">
-		<a href="#" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		<a href="#" data-rel="back" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-check ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Ok</a>
-		<h1 id="sdf">Contacts</h1>
+		<h1>Contacts</h1>
 	</div><!--/header-->
 	
 	<div data-role="content" data-theme="a">
@@ -123,24 +171,11 @@
 	</div>
 </div><!-- /page -->
 
-<!--Settings-->
-<div data-role="page" data-theme="b" id="Settings">
-	<div data-role="header" data-theme="a" >
-		<a href="../Settings/" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
-		<h1>Settings</h1>
-	</div><!--/header-->
-	
-	<div data-role="content" data-theme="a">
-		
-	</div>
-</div><!-- /page -->
-
 <!--List of debts-->
-<div data-role="page" data-theme="b" id="ListOfDebts">
-
+<div data-role="page" data-theme="b" id="ListOfDebts" data-title="List of debts" class="current">
 	<div data-role="header" data-theme="a" data-position="fixed">
 		<a href="#" data-rel="panel" data-position="right" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
-		<a href="../ListOfDebts/" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		
 		<h1>List of debts</h1>
 	</div><!--/header-->
@@ -153,38 +188,42 @@
 				});
 			</script>
 			<li id="12">
-                <a href="#" onclick="plugin_listview.listItemSingleSelect(this.parentElement)">
-                    <h3 class="topic">Name</h3>
-                    <p><strong>Owner</strong></p>
-                    <p>summary...</p>
-                    <p class="ui-li-aside"><strong>Total</strong>(currency)</p>
-                </a>
-                <a href="#" class="delete" onclick="plugin_listview.delete_item(this.parentElement,'deleteDebtConfirm')">Delete</a>
-            </li>
+				<a href="#" onclick="plugin_listview.listItemSingleSelect(this.parentElement)">
+					<h3 class="topic">Name</h3>
+					<p><strong>Owner</strong></p>
+					<p>summary...</p>
+					<p class="ui-li-aside"><strong>Total</strong>(currency)</p>
+				</a>
+				<a href="#" class="delete" onclick="plugin_listview.delete_item(this.parentElement,'deleteDebtConfirm')">Delete</a>
+			</li>
 		</ul>
 	</div>
 	
+	<div data-role="footer", data-theme="c">
+		
+	</div><!--/footer-->
+	
 	<div id="deleteDebtConfirm" class="ui-content" data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" data-transition="slidedown">
-        <p id="question">Are you sure you want to delete:</p>
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
-            </div>
-            <div class="ui-block-b">
-                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
-            </div>
-        </div>
-    </div><!-- /popup -->
+		<p id="question">Are you sure you want to delete:</p>
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
+			</div>
+			<div class="ui-block-b">
+				<a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
+			</div>
+		</div>
+	</div><!-- /popup -->
 
 </div><!-- /page -->
 
 
 <!--List of bills-->
-<div data-role="page" data-theme="b" id="ListOfBills">
+<div data-role="page" data-theme="b" id="ListOfBills" data-title="List of bills">
 
 	<div data-role="header" data-theme="a" data-position="fixed">
 		<a href="#" data-rel="panel" data-position="right" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
-		<a href="../ListOfBills/" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		
 		<h1>List of bills</h1>
 	</div><!--/header-->
@@ -197,35 +236,39 @@
 				});
 			</script>
 			<li id="12">
-                <a href="#" onclick="plugin_listview.listItemSingleSelect(this.parentElement)">
-                    <h3 class="topic">Name</h3>
-                    <p>summary...</p>
-                    <p class="ui-li-aside"><strong>Share</strong>(currency)</p>
-                </a>
-                <a href="#" class="delete" onclick="plugin_listview.delete_item(this.parentElement,'deleteBillConfirm')">Delete</a>
-            </li>
+				<a href="#" onclick="plugin_listview.listItemSingleSelect(this.parentElement)">
+					<h3 class="topic">Name</h3>
+					<p>summary...</p>
+					<p class="ui-li-aside"><strong>Share</strong>(currency)</p>
+				</a>
+				<a href="#" class="delete" onclick="plugin_listview.delete_item(this.parentElement,'deleteBillConfirm')">Delete</a>
+			</li>
 		</ul>
-	</div>
-	
-	<div id="deleteBillConfirm" class="ui-content" data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" data-transition="slidedown">
-        <p id="question">Are you sure you want to delete:</p>
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
-            </div>
-            <div class="ui-block-b">
-                <a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
-            </div>
-        </div>
-    </div><!-- /popup -->
-	
-	<div data-role="footer", data-theme="c">
-	<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal" class="ui-mini ui-btn-right" data-position="fixed">
 			<a href="#" onclick="plugin_listview.fill_list('billsList')" class="ui-btn ui-btn-icon-right ui-icon-plus">Add</a>
 			<a href="#" class="ui-btn ui-btn-icon-right ui-icon-edit">Quick add</a>
 		</div>
+	</div>
+	
+	<div id="deleteBillConfirm" class="ui-content" data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" data-transition="slidedown">
+		<p id="question">Are you sure you want to delete:</p>
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a id="yes" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Yes</a>
+			</div>
+			<div class="ui-block-b">
+				<a id="cancel" class="ui-btn ui-corner-all ui-mini ui-btn-a" data-rel="back">Cancel</a>
+			</div>
+		</div>
+	</div><!-- /popup -->
+	
+	<div data-role="footer", data-theme="a">
+		
 	</div><!--/footer-->
 </div><!-- /page -->
+
+<!--Main pages------------------------------------------------------------------------------------------------------------------------------------>
+
 
 <!--Edit bill-->
 <div data-role="page" data-theme="b" id="EditBill">
@@ -262,7 +305,7 @@
 				<h3 style="color:gray;">Total:</h3>
 			</div>
 			<div class="ui-body ui-body-a">
-				<p align="right">$My precious$</p>
+				<p align="right"><strong>Many digits</strong>($)</p>
 			</div>
 		</div>
 		<div class="ui-corner-all custom-corners">
@@ -270,7 +313,7 @@
 				<h3 style="color:gray;">Share: </h3>
 			</div>
 			<div class="ui-body ui-body-a">
-				<p align="right">share</p>
+				<p align="right"><strong>$My precious$</strong>($)</p>
 			</div>
 		</div>
 		<div class="ui-corner-all custom-corners">
@@ -286,17 +329,58 @@
 
 <!--Invitation-->
 <div data-role="page" data-theme="b" id="InvitationPage">
-<div data-role="popup" id="Invitation" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;" data-transition="slidedown">
-    <div data-role="header" data-theme="a">
-    <h1>Delete Page?</h1>
-    </div>
-    <div role="main" class="ui-content">
-        <h3 class="ui-title">Are you sure you want to delete this page?</h3>
-    <p>This action cannot be undone.</p>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Confirm</a>
-        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back" data-transition="flow">Reject</a>
-    </div>
-</div>
+	<div data-role="popup" id="Invitation" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;" data-transition="slidedown">
+		<div data-role="header" data-theme="a">
+			<h1>Invitation</h1>
+		</div>
+		<div role="main" class="ui-content">
+			<h3 class="ui-title">Hi, let's share the pay</h3>
+			<p><style="color:gray">Total:</style><strong>200</strong>($)</p>
+			<p><style="color:gray">Share:</style><strong>250</strong>($)</p>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Confirm</a>
+			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Reject</a>
+		</div>
+	</div>
+</div><!-- /page -->
+
+<!--Test-->
+<div data-role="page" data-theme="b" id="TestPage">
+	
+	<div data-role="header" data-theme="a" >
+		<a href="" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<a href="" data-rel="edit" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<h1 id="debtName">Test page</h1>
+	</div><!--/header-->
+
+	<div data-role="content" data-theme="a">
+		<div data-role="tabs" id="tabs">
+			<div data-role="navbar">
+				<ul id="tab-bar">
+					<li>
+						<a href="#one">Map</a>
+					</li>
+					<li>
+						<a href="#two">Camera</a>
+					</li>
+					<li>
+						<a href="#">Twitter</a>
+					</li>
+				</ul>
+			</div>
+			<div id="one" class="ui-body-d ui-content">
+				<h1>First tab contents</h1>
+			</div>
+			<div id="two">
+				<ul data-role="listview" data-inset="true">
+					<li><a href="#">Acura</a></li>
+					<li><a href="#">Audi</a></li>
+					<li><a href="#">BMW</a></li>
+					<li><a href="#">Cadillac</a></li>
+					<li><a href="#">Ferrari</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div><!-- /page -->
 </body>
 </html>

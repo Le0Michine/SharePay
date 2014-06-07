@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+  <title>Smart bill</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta content="user-scalable=no" />
+  
+	<link rel="stylesheet" href="Lib/jquery.mobile-1.4.2.min.css" />  
+	<link rel="stylesheet" href="Scripts/icons.css"/> 
+	<style type="text/css" media="all">
+		#pages > div {
+			display: none;
+		}
+		#pages > div.current {
+			display: block;
+		}
+		#pages{
+			position:relative;
+		}
+		/* Update this style */
+		#pages > div {
+			display: none;
+			position: absolute;
+			top:0;left:0;
+			width:100%;
+			height:100%;
+		}
+		#tab-bar{
+			margin:0;
+			padding:0;
+		}
+		#tab-bar li {
+			display: inline;
+			float:left;
+			width: 33.333%;
+		}
+		#tab-bar a {
+			color: #cdcdcd;
+			display: block;
+			font-weight: bold;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
+			-webkit-touch-callout:none;
+		}
+	</style>
+	<!-- <link rel="stylesheet" href="Lib/PageSlider/css/pageslider.css"> -->
+    <!-- <link rel="stylesheet" href="Lib/PageSlider/css/styles.css"> -->
+  
+	<script type="text/javascript" src="Lib/jquery-1.7.1.js"></script>    
+	<script type="text/javascript" src="Lib/jquery.mobile-1.4.2.min.js"></script>
+	<script type="text/javascript" src="Lib/jquery.cookie.js" ></script>
+	<script type="text/javascript" src="Lib/cordova-2.4.0.js" ></script>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<script type="text/javascript" src="Lib/ajaxupload.js"></script>
+	<script type="text/javascript" src="Lib/iscroll-lite.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="Scripts/VKAutorizationPlugin.js"></script>   
+	<script type="text/javascript" src="Scripts/UserDetails.js"></script>   
+	<script type="text/javascript" src="Scripts/strings.js"></script>   
+	<script type="text/javascript" src="Scripts/listview_plugin.js"></script>   
+	
+    <script type="text/javascript" charset="utf-8">
+		// Wait for device API libraries to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+		// device APIs are available
+		//
+		function onDeviceReady() {
+		}
+		onDeviceReady()
+    </script>
+  </head>
+  <body>
+<!--Main pages----------------------------------------------------------------------------------------------->
+
+<div id="pages">
+
+	
+    <div id="map">
+		<h1>Map</h1>
+    </div>
+    <div id="camera"  class="current">
+		<h1>Camera</h1>
+    </div>
+    <div id="twitter">
+		<h1>Twitter</h1>
+    </div>
+
+	<ul id="tab-bar">
+		<li>
+			<a href="#map">Map</a>
+		</li>
+		<li>
+			<a href="#camera">Camera</a>
+		</li>
+		<li>
+			<a href="#twitter">Twitter</a>
+		</li>
+	</ul>
+	
+	<script type="text/javascript" charset="utf-8">
+		$('#tab-bar a').on('click', function(e){
+			e.preventDefault();
+			var nextPage = $(e.target.hash);
+			$("#pages .current").removeClass("current");
+			nextPage.addClass("current");
+		});
+	</script>
+	<div data-role="popup" id="navPopupMenu" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Choose an action</li>
+            <li><a href="#">View details</a></li>
+            <li><a href="#">Edit</a></li>
+            <li><a href="#">Disable</a></li>
+            <li><a href="#">Delete</a></li>
+        </ul>
+	</div>
+
+</div>
+<!--Main pages------------------------------------------------------------------------------------------------------------->
+
+
+</body>
+</html>
