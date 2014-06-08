@@ -46,6 +46,7 @@ var plugin_vk = {
             window.localStorage.setItem(plugins.plugin_vk_exp, tmp['expires_in']);
             window.localStorage.setItem(plugins.plugin_vk_perms, plugin_vk.plugin_perms);
         }
+		$.mobile.changePage("#ListOfDebts");
     },
 	load_friends: function() {
 		//alert("load_friends");
@@ -85,7 +86,6 @@ var plugin_vk = {
 				this.first_name+' '+this.last_name)))
 		});
 		$("#FriendsList").listview("refresh");
-		//$.mobile.changePage("#Contacts");
 	},
 	get_user_info: function(uid) {
 		var userURL="https://api.vk.com/method/users.get?user_id="+uid+"&fields=first_name,last_name,photo_medium,photo_big";

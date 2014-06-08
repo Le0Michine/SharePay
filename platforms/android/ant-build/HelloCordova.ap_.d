@@ -570,7 +570,6 @@ d:\Develop\SmartBill\platforms\android\assets\www\Scripts\bills.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\debts.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.png \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.svg \
-d:\Develop\SmartBill\platforms\android\assets\www\Scripts\Functions \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\icons.css \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\icons.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\listview_plugin.js \
