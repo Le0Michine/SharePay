@@ -36,9 +36,9 @@ function debtToListItem(debt) {
 
 function testDebtBase() {
 	var debts = new Array();
-	debts[debts.length] = new Debt("debt1","Rob","234134","23","3","$","summary..");
-	debts[debts.length] = new Debt("debt2","Tom","544234","145","15","£","summary..");
-	debts[debts.length] = new Debt("debt3","Sam","564213","345","34","$","summary..");
+	debts[debts.length] = new Debt("debt1",getContact("16907986").first_name,"16907986","23","3","$","summary..");
+	debts[debts.length] = new Debt("debt2",getContact("12099300").first_name,"12099300","145","15","£","summary..");
+	debts[debts.length] = new Debt("debt3",getContact("985727").first_name,"985727","345","34","$","summary..");
 	return debts;
 }
 
@@ -56,7 +56,7 @@ function fillDebtDetails(item){
 	$("#debt-summary").children("p").remove();
 	debt=getCachedDebt(item.id);
 	$("#debt-name").append(create("p",{class:"debt-name"},debt.id));
-	$("#debt-owner").append(create("p",{class:"debt-owner"},debt.owner));
+	$("#debt-owner").append(create("p",{class:"debt-owner"},debt.owner," (id: "+debt.owner_id+")"));
 	$("#debt-total").append(create("p",{class:"debt-total"},create("strong",{},debt.total),debt.currency));
 	$("#debt-share").append(create("p",{class:"debt-share"},create("strong",{},debt.share),debt.currency));
 	$("#debt-summary").append(create("p",{class:"debt-summary"},debt.summary));

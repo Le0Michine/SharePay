@@ -567,6 +567,7 @@ d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.ina
 d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www \
 d:\Develop\SmartBill\platforms\android\assets\www\plugins\org.apache.cordova.splashscreen\www\splashscreen.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\bills.js \
+d:\Develop\SmartBill\platforms\android\assets\www\Scripts\contacts.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\debts.js \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.png \
 d:\Develop\SmartBill\platforms\android\assets\www\Scripts\fb.svg \

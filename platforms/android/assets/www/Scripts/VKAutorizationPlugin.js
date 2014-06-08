@@ -80,6 +80,7 @@ var plugin_vk = {
 		saveObjToList(contact,contacts_info.list_id);
 	},
 	fill_friends_list: function (list) {
+		$("#FriendsList").find('li').remove();
 		jQuery.each(list,function() {
 			$("#FriendsList").append(create("li",{},
 				create("a",{href:"#",onclick:"plugin_listview.listItemMultiSelect(this.id)","data-theme":"c",id:this.uid},

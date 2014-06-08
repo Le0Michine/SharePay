@@ -22,8 +22,6 @@
 			border-color: black;
 		}
 	</style>
-	<!-- <link rel="stylesheet" href="Lib/PageSlider/css/pageslider.css"> -->
-    <!-- <link rel="stylesheet" href="Lib/PageSlider/css/styles.css"> -->
   
 	<script type="text/javascript" src="Lib/jquery-1.7.1.js"></script>    
 	<script type="text/javascript" src="Lib/jquery.mobile-1.4.2.min.js"></script>
@@ -51,11 +49,11 @@
 		function onDeviceReady() {
 			var uid = window.localStorage.getItem("plugin_vk_user_id");
 			if(uid == null) {
-				plugin_vk.auth(true)
+				$.mobile.changePage("#AuthPage");
 			}
 			//plugin_vk.load_friends();
 			//plugin_vk.get_user_info(uid);
-			$.mobile.changePage("#AuthPage");
+			$.mobile.changePage("#ListOfDebts");
 		}
 		
 		function menuKeyDown(e){
@@ -84,6 +82,7 @@
             <li><a href="#Contacts" onclick>Contacts</a></li>
             <li><a href="#ListOfBills">List of bills</a></li>
             <li><a href="#ListOfDebts">List of debts</a></li>
+            <li><a href="#Settings">Settings</a></li>
             <li><a href="#DebugPage">Debug page</a></li>
         </ul>
 	</div>
@@ -206,7 +205,11 @@
 	</div><!--/header-->
 	
 	<div data-role="content" data-theme="a">
-		
+		<ul data-role="listview" data-inset="true">
+			<li>
+				<a href="#UserInfo" class="ui-alt-icon ui-nodisc-icon ui-icon-right ui-icon-carat-r">User</a>
+			</li>
+		</ul>
 	</div>
 </div><!-- /page -->
 

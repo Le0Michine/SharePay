@@ -79,4 +79,5 @@ function fill_bills_test() {
 	bills = testBillBase();
 	jQuery.each(bills,function(){$("#billsList").append(billToListItem(this))});
 	$("#billsList").listview("refresh");
+	saveObj(bills,bills_info.list_id);
 }

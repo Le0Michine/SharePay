@@ -45,9 +45,9 @@ function Bill(id, total, currency, summary, participants) {
 	this.participants=participants;
 }
 
-function Contact(id, name, last_name, photo) {
-	this.id=id;
-	this.name=name;
+function Contact(uid, first_name, last_name, photo) {
+	this.uid=uid;
+	this.first_name=name;
 	this.last_name=last_name;
 	this.photo=photo;
 }
