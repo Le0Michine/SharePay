@@ -38,6 +38,7 @@
 	<script type="text/javascript" src="Scripts/listview_plugin.js"></script>   
 	<script type="text/javascript" src="Scripts/debts.js"></script>   
 	<script type="text/javascript" src="Scripts/bills.js"></script>   
+	<script type="text/javascript" src="Scripts/contacts.js"></script>   
 	
     <script type="text/javascript" charset="utf-8">
 		// Wait for device API libraries to load
@@ -287,7 +288,7 @@
 	<div data-role="popup" id="billPopup" data-theme="b">
         <ul data-role="listview" data-inset="true" style="min-width:210px;">
             <!-- <li data-role="list-divider">Go to...</li> -->
-            <li><a href="#">Bill details</a></li>
+            <li><a href="#BillDetails" onclick="fill_bill_details()">Bill details</a></li>
             <li><a href="#">Resend invitations</a></li>
             <li><a href="#">Edit</a></li>
         </ul>
@@ -359,7 +360,7 @@
 	<div data-role="header" data-theme="a" >
 		<a href="" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
 		<a href="" data-rel="edit" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-edit ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
-		<h1 id="debt-name">Bill:</h1>
+		<h1 id="bill-name">Bill:</h1>
 	</div><!--/header-->
 		
 	<div data-role="content" data-theme="a" id="billDetailsContent">
@@ -367,28 +368,27 @@
 			<div class="ui-bar ui-bar-a">
 				<h3 style="color:gray;">Total:</h3>
 			</div>
-			<div align="right" class="ui-body ui-body-a" id="debt-total">
-				<p class="debt-total"><strong>Many digits</strong>($)</p>
+			<div align="right" class="ui-body ui-body-a" id="bill-total">
+				<p class="bill-total"><strong>Many digits</strong>($)</p>
 			</div>
 		</div>
 		<div class="ui-corner-all custom-corners">
 			<div class="ui-bar ui-bar-a">
 				<h3 style="color:gray;">Summary: </h3>
 			</div>
-			<div align="right" class="ui-body ui-body-a summary" id="debt-summary">
-				<p class="debt-summary">Many letters...so many letters</p>
+			<div align="right" class="ui-body ui-body-a summary" id="bill-summary">
+				<p class="bill-summary">Many letters...so many letters</p>
 			</div>
 		</div>
 		<div class="ui-corner-all custom-corners">
 			<div class="ui-bar ui-bar-a">
 				<h3 style="color:gray;">Participants: </h3>
 			</div>
-			<div align="right" class="ui-body ui-body-a summary" id="debt-summary">
-				<ul id="participantsList" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+			<div align="right" class="ui-body ui-body-a">
+				<ul class="touch" id="bill-participants" data-role="listview" data-inset="true">
 					<script type="text/javascript" charset="utf-8">
 						$('#BillDetails').bind('pageinit', function() {
 							plugin_listview.init();
-							fill_participant_list();
 						});
 					</script>
 				</ul>
