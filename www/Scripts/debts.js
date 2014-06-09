@@ -36,9 +36,10 @@ function debtToListItem(debt) {
 
 function testDebtBase() {
 	var debts = new Array();
-	debts[debts.length] = new Debt("debt1",getContact("16907986").first_name,"16907986","23","3","$","summary..");
-	debts[debts.length] = new Debt("debt2",getContact("12099300").first_name,"12099300","145","15","£","summary..");
-	debts[debts.length] = new Debt("debt3",getContact("985727").first_name,"985727","345","34","$","summary..");
+	contacts=getContact_list();
+	debts[debts.length] = new Debt("debt1",contacts[1].first_name,contacts[1].uid,"23","3","$","summary..");
+	debts[debts.length] = new Debt("debt2",contacts[4].first_name,contacts[4].uid,"145","15","£","summary..");
+	debts[debts.length] = new Debt("debt3",contacts[7].first_name,contacts[7].uid,"345","34","$","summary..");
 	return debts;
 }
 

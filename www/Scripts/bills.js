@@ -69,9 +69,10 @@ function fill_bill_details() {
 
 function testBillBase() {
 	var bills = new Array();
-	bills[bills.length] = new Bill("bill1","125","$","summary..",["16907986"]);
-	bills[bills.length] = new Bill("bill2","145","£","summary..",["12099300","16907986"]);
-	bills[bills.length] = new Bill("bill3","345","$","summary..",["985727","12099300"]);
+	contacts=getContact_list();
+	bills[bills.length] = new Bill("bill1","125","$","summary..",[contacts[3].uid]);
+	bills[bills.length] = new Bill("bill2","145","£","summary..",[contacts[5].uid,contacts[1].uid,contacts[6].uid]);
+	bills[bills.length] = new Bill("bill3","345","$","summary..",[contacts[1].uid,contacts[3].uid,contacts[8].uid,contacts[7].uid,contacts[5].uid]);
 	return bills;
 }
 

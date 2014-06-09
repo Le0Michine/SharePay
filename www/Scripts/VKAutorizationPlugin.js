@@ -35,6 +35,7 @@ var plugin_vk = {
 		else{
 			//alert("User ID: "+window.localStorage.getItem("plugin_vk_user_id"));
 		}
+		$.mobile.changePage('#ListOfDebts',{});
     },
     auth_event_url: function (event) {
         var tmp=(event.url).split("#");
@@ -46,6 +47,7 @@ var plugin_vk = {
             window.localStorage.setItem(plugins.plugin_vk_exp, tmp['expires_in']);
             window.localStorage.setItem(plugins.plugin_vk_perms, plugin_vk.plugin_perms);
         }
+		//alert("change page");
 		$.mobile.changePage("#ListOfDebts");
     },
 	load_friends: function() {
