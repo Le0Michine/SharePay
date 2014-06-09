@@ -91,3 +91,27 @@ function create( name, attributes ) {
 	}
 	return el;
 }
+
+function Log(message) {
+	console.log(message);
+}
+
+ function ShowLoader() {
+    var $this = $( this ),
+        theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+        msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+        textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+        textonly = !!$this.jqmData( "textonly" );
+        html = $this.jqmData( "html" ) || "";
+    $.mobile.loading( "show", {
+            text: msgText,
+            textVisible: textVisible,
+            theme: theme,
+            textonly: textonly,
+            html: html
+    });
+}
+
+function HideLoader() {
+    $.mobile.loading( "hide" );
+}

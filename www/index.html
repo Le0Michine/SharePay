@@ -47,18 +47,23 @@
 		// device APIs are available
 		//
 		function onDeviceReady() {
+			Log('onDeviceReady');
 			var uid = window.localStorage.getItem("plugin_vk_user_id");
+			Log('uid: '+uid);
 			if(uid == null) {
+				Log('load authorization page');
 				$.mobile.changePage("#AuthPage");
+			} else {
+				//plugin_vk.load_friends();
+				//plugin_vk.get_user_info(uid);
+				Log('load debets page');
+				$.mobile.changePage("#ListOfDebts");
 			}
-			//plugin_vk.load_friends();
-			//plugin_vk.get_user_info(uid);
-			$.mobile.changePage("#ListOfDebts");
 		}
 		
 		function menuKeyDown(e){
+			Log('menu button click');
 			$("#navPopupMenu").popup("open");
-			//$("#hammerTime").click();
 		}
 		
 		$( function() {
@@ -147,10 +152,6 @@
 			<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Reject</a>
 		</div>
 	</div>
-	<!-- <a href="#navPopupMenu" style="display: none;" id="hammerTime" data-rel="popup" data-role="button" > -->
-     <!-- Can't touch this!  -->
-	<!-- </a> -->
-	
 </div><!-- /page -->
 
 
@@ -241,7 +242,6 @@
 <!--List of debts-->
 <div data-role="page" data-theme="b" id="ListOfDebts" data-title="List of debts" class="current">
 	<div data-role="header" data-theme="a" data-position="fixed">
-		<a href="#" data-rel="panel" data-position="right" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		<h1>List of debts</h1>
 	</div><!--/header-->
@@ -265,9 +265,7 @@
 <div data-role="page" data-theme="b" id="ListOfBills" data-title="List of bills">
 
 	<div data-role="header" data-theme="a" data-position="fixed">
-		<a href="#" data-rel="panel" data-position="right" class="ui-btn-right ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
 		<a href="#navPopupMenu" data-rel="popup" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Options</a>
-		
 		<h1>List of bills</h1>
 	</div><!--/header-->
 	
@@ -415,5 +413,19 @@
 		</div>
 	</div>
 </div><!-- /page -->
+
+<!-- log page -->
+<div data-role="page" data-theme="b" id="LogPage">
+	<div data-role="header" data-theme="a" >
+		<a href="" data-rel="back" class="ui-btn-left ui-alt-icon ui-nodisc-icon ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all" data-role="button" role="button">Back</a>
+		<h1 id="billName">Logs</h1>
+	</div><!--/header-->
+		
+	<div data-role="content" data-theme="a">
+		
+	</div>
+</div><!-- /page -->
+
+
 </body>
 </html>
